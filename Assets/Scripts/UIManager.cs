@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
     public TMP_Text livesText;
     public TMP_Text colorWordText;
     public TMP_Text timeText;
+    public TMP_Text reverseText;
 
     private void Update()
     {
@@ -22,5 +23,7 @@ public class UIManager : MonoBehaviour
             > 1.0f => "2",
             _ => "1"
         };
+
+        reverseText.text = GameSystem.Instance.Reverse ? "REVERSED" : "";
     }
 }

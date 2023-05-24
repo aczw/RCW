@@ -12,7 +12,7 @@ public class GameSystem : MonoBehaviour
     public int Score { get; private set; }
     public int Lives { get; private set; } = 3;
     
-    public bool Reverse { get; private set; } = false;
+    public bool Reverse { get; private set; }
 
     private void WinRound()
     {
@@ -29,7 +29,13 @@ public class GameSystem : MonoBehaviour
 
     private void PrepareNextRound()
     {
+        if (Reverse)
+        {
+            Reverse = false;
+        }
+        
         (CurrText, CurrColor) = Property.ChooseColors();
+        Reverse = Property.ChooseReverse();
         Timer.Reset();
     }
 
@@ -49,32 +55,8 @@ public class GameSystem : MonoBehaviour
 
     private void Start()
     {
-        //(CurrText, CurrColor) = RoundProperty.ChooseColors();
-        
+        // around 1 correct match for every 1.7 incorrect matches
         PrepareNextRound();
-        var correct = 0;
-        var incorrect = 0;
-        
-        for (var i = 0; i < 100000; i++)
-        {
-            var match = CurrText.Equals(CurrColor);
-            
-            
-            // always press right key (color matches text)
-            if (match)
-            {
-                WinRound();
-                correct += 1;
-            }
-            else
-            {
-                LoseRound();
-                incorrect += 1;
-            }
-        }
-        
-        Debug.Log("correct: " + correct);
-        Debug.Log("incorrect: " + incorrect);
     }
 
     private void Update()
@@ -88,23 +70,24 @@ public class GameSystem : MonoBehaviour
         
         if (Input.GetKeyUp(KeyCode.RightArrow))
         {
-            if (match)
-            {
-                WinRound();
-            }
-            else
+            if ((Reverse && match) || (!Reverse && !match))
             {
                 LoseRound();
             }
-        } else if (Input.GetKeyUp(KeyCode.LeftArrow))
+            else
+            {
+                WinRound();
+            }
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftArrow))
         {
-            if (match)
+            if ((Reverse && match) || (!Reverse && !match))
             {
-                LoseRound();
+                WinRound();
             }
             else
             {
-                WinRound();
+                LoseRound();
             }
         }
     }

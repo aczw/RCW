@@ -16,11 +16,13 @@ public class RoundProperty
 {
     private ColorData _prevText;
     private ColorData _prevColor;
+    private int _untilGuarantee;
 
     public RoundProperty()
     {
-        _prevText = new ColorData();
-        _prevColor = new ColorData();
+        _prevText = RandomColor();
+        _prevColor = RandomColor();
+        _untilGuarantee = 3;
     }
     
     private static readonly ColorData[] ColorList =
@@ -31,18 +33,39 @@ public class RoundProperty
         new("Blue", new Color(0.537f, 0.706f, 0.98f)),
         new("Purple", new Color(0.796f, 0.651f, 0.969f))
     };
+
+    private static ColorData RandomColor()
+    {
+        return ColorList[Random.Range(0, ColorList.Length)];
+    }
     
     public (ColorData, ColorData) ChooseColors()
     {
-        var text = ColorList[Random.Range(0, ColorList.Length)];
-        var color = ColorList[Random.Range(0, ColorList.Length)];
-
-        while (_prevText.Equals(text) && _prevColor.Equals(color))
+        var text = RandomColor();
+        var color = RandomColor();
+        
+        if (!text.Equals(color))
         {
-            text = ColorList[Random.Range(0, ColorList.Length)];
-            color = ColorList[Random.Range(0, ColorList.Length)];
+            _untilGuarantee -= 1;
         }
+        
+        if (_untilGuarantee == 0)
+        {
+            var match = RandomColor();
+            text = match;
+            color = match;
 
+            _untilGuarantee = Random.Range(2, 8);
+        }
+        else
+        {
+            while (_prevText.Equals(text) && _prevColor.Equals(color))
+            {
+                text = RandomColor();
+                color = RandomColor();
+            }
+        }
+        
         _prevText = text;
         _prevColor = color;
 
@@ -51,8 +74,7 @@ public class RoundProperty
 
     public bool ChooseReverse()
     {
-        var choice = Random.Range(0, 9) + 1;
-
-        return false;
+        // 0 or 1... 20% chance of reversal
+        return Random.Range(0, 10) <= 1;
     }
 }

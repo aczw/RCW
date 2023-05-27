@@ -6,6 +6,7 @@ public class GameSystem : MonoBehaviour
     
     public RoundTimer Timer { get; private set; }
     public RoundProperty Property { get; private set; }
+    public bool Paused { get; private set; }
     
     public ColorData CurrText { get; private set; }
     public ColorData CurrColor { get; private set; }
@@ -37,6 +38,12 @@ public class GameSystem : MonoBehaviour
         (CurrText, CurrColor) = Property.ChooseColors();
         Reverse = Property.ChooseReverse();
         Timer.Reset();
+    }
+
+    public void TogglePause()
+    {
+        Timer.TogglePause();
+        Paused = true;
     }
 
     private void Awake()

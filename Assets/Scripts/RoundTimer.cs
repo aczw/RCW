@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 
 public class RoundTimer : MonoBehaviour
 {
     private const float RoundTime = 3.0f;
+    private bool _paused;
     public float CurrTime { get; private set; } = RoundTime;
 
     public void Reset()
@@ -18,8 +20,16 @@ public class RoundTimer : MonoBehaviour
         }
     }
 
+    public void TogglePause()
+    {
+        _paused = !_paused;
+    }
+
     private void Update()
     {
-        CurrTime -= Time.deltaTime;
+        if (!_paused)
+        {
+            CurrTime -= Time.deltaTime;
+        }
     }
 }

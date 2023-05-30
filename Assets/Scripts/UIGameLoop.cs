@@ -32,6 +32,6 @@ public class UIGameLoop : MonoBehaviour
         timeSlider.value = time;
         timeText.text = time.ToString("F");
 
-        reverseText.text = GameSystem.Instance.Reverse ? "REVERSED" : "";
+        reverseText.color = GameSystem.Instance.Reverse ? new Color(0.478f, 1f, 0.392f) : new Color(0.42f, 0.42f, 0.42f);
     }
 }                           

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class UIGameLoop : MonoBehaviour
@@ -8,25 +9,29 @@ public class UIGameLoop : MonoBehaviour
     public TMP_Text colorWordText;
     public TMP_Text timeText;
     public TMP_Text reverseText;
+    public Slider timeSlider;
 
     private void Update()
     {
-        scoreText.text = "Score: " + GameSystem.Instance.Score;
+        var score = GameSystem.Instance.Score;
+        scoreText.text = score switch
+        {
+            >= 100000 => score.ToString(),
+            >= 10000 => "0" + score,
+            >= 1000 => "00" + score,
+            >= 100 => "000" + score,
+            _ => "000000"
+        };
+        
         livesText.text = GameSystem.Instance.Lives.ToString();
-        colorWordText.text = GameSystem.Instance.CurrText.Name;
+        
+        colorWordText.text = GameSystem.Instance.CurrText.Name.ToLower();
         colorWordText.color = GameSystem.Instance.CurrColor.Color;
         
-        /*
         var time = GameSystem.Instance.Timer.CurrTime;
-        timeText.text = time switch
-        {
-            > 2.0f => "3",
-            > 1.0f => "2",
-            _ => "1"
-        };
-        */
-        timeText.text = GameSystem.Instance.Timer.CurrTime.ToString();
+        timeSlider.value = time;
+        timeText.text = time.ToString("F");
 
         reverseText.text = GameSystem.Instance.Reverse ? "REVERSED" : "";
     }
-}
+}                           

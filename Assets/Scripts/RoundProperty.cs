@@ -72,9 +72,9 @@ public class RoundProperty
         return (text, color);
     }
 
-    public bool ChooseReverse()
+    public static bool ChooseReverse()
     {
-        // 0 or 1... 20% chance of reversal
-        return Random.Range(0, 10) <= 1;
+        // 10% chance of reversal
+        return Random.Range(0, 10) == 0;
     }
 }

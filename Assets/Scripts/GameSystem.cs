@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GameSystem : MonoBehaviour
@@ -16,13 +17,13 @@ public class GameSystem : MonoBehaviour
 
     private void WinRound()
     {
-        Score += 100;
+        Score += CalculateRoundScore();
         PrepareNextRound();
     }
 
     private void LoseRound()
     {
-        Score -= 100;
+        Score -= CalculateRoundScore();
         Lives -= 1;
         PrepareNextRound();
     }
@@ -37,6 +38,17 @@ public class GameSystem : MonoBehaviour
         (CurrText, CurrColor) = Property.ChooseColors();
         Reverse = RoundProperty.ChooseReverse();
         Timer.Reset();
+    }
+
+    private int CalculateRoundScore()
+    {
+        var current = Timer.CurrTime;
+        var percentage = current / RoundTimer.RoundTime;
+        var score = (int) Math.Round(100 * percentage);
+        
+        Debug.Log(score);
+
+        return score;
     }
 
     public void TogglePause()

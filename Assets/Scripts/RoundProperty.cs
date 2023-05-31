@@ -74,7 +74,7 @@ public class RoundProperty
 
     public static bool ChooseReverse()
     {
-        // 10% chance of reversal
-        return Random.Range(0, 10) == 0;
+        // 15% chance of reversal
+        return Random.Range(0, 100) <= 14;
     }
 }

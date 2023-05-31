@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class RoundTimer : MonoBehaviour
 {
-    private const float RoundTime = 3.0f;
+    public const float RoundTime = 3.0f;
     private bool _paused;
     public float CurrTime { get; private set; } = RoundTime;
 

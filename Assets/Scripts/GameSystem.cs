@@ -7,12 +7,12 @@ public class GameSystem : MonoBehaviour
     
     public RoundTimer Timer { get; private set; }
     private RoundProperty Property { get; set; }
+    public bool Paused { get; private set; }
 
     public ColorData CurrText { get; private set; }
     public ColorData CurrColor { get; private set; }
     public int Score { get; private set; }
     public int Lives { get; private set; } = 3;
-    
     public bool Reverse { get; private set; }
 
     private void WinRound()
@@ -23,7 +23,16 @@ public class GameSystem : MonoBehaviour
 
     private void LoseRound()
     {
-        Score -= CalculateRoundScore();
+        var roundScore = CalculateRoundScore();
+        if (Score - roundScore <= 0)
+        {
+            Score = 0;
+        }
+        else
+        {
+            Score -= roundScore;
+        }
+        
         Lives -= 1;
         PrepareNextRound();
     }
@@ -53,7 +62,7 @@ public class GameSystem : MonoBehaviour
 
     public void TogglePause()
     {
-        Timer.TogglePause();
+        Paused = !Paused;
     }
 
     private void Awake()

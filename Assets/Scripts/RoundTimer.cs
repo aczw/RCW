@@ -3,7 +3,6 @@ using UnityEngine;
 public class RoundTimer : MonoBehaviour
 {
     public const float RoundTime = 3.0f;
-    private bool _paused;
     public float CurrTime { get; private set; } = RoundTime;
 
     public void Reset()
@@ -19,14 +18,9 @@ public class RoundTimer : MonoBehaviour
         }
     }
 
-    public void TogglePause()
-    {
-        _paused = !_paused;
-    }
-
     private void Update()
     {
-        if (!_paused)
+        if (!GameSystem.Instance.Paused)
         {
             CurrTime -= Time.deltaTime;
         }

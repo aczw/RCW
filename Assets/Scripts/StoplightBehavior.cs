@@ -12,6 +12,6 @@ public class StoplightBehavior : MonoBehaviour
 
     private void Update()
     {
-        _animator.SetFloat(Time, GameSystem.Instance.timeManager.CurrTime);
+        _animator.SetFloat(Time, Rcw.Instance.timeManager.CurrTime);
     }
 }

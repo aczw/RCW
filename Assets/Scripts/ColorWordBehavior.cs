@@ -7,14 +7,14 @@ public class ColorWordBehavior : MonoBehaviour
     
     private void Start()
     {
-        GameSystem.Instance.ColorWordChanged += OnColorWordChanged;
+        Rcw.Instance.ColorWordChanged += OnColorWordChanged;
         colorWordText.text = "";
         colorWordText.color = Color.white;
     }
 
     private void OnColorWordChanged()
     {
-        colorWordText.text = GameSystem.Instance.roundManager.RoundText.Name.ToLower();
-        colorWordText.color = GameSystem.Instance.roundManager.RoundColor.Color;
+        colorWordText.text = Rcw.Instance.roundManager.RoundText.Name.ToLower();
+        colorWordText.color = Rcw.Instance.roundManager.RoundColor.Color;
     }
 }

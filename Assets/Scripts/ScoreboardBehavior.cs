@@ -11,9 +11,9 @@ public class ScoreboardBehavior : MonoBehaviour
 
     private void Start()
     {
-        GameSystem.Instance.ScoreChanged += OnScoreChanged;
-        GameSystem.Instance.RoundWon += OnRoundWon;
-        GameSystem.Instance.RoundLost += OnRoundLost;
+        Rcw.Instance.ScoreChanged += OnScoreChanged;
+        Rcw.Instance.RoundWon += OnRoundWon;
+        Rcw.Instance.RoundLost += OnRoundLost;
         
         scoreText.text = "000000";
     }
@@ -30,7 +30,7 @@ public class ScoreboardBehavior : MonoBehaviour
 
     private void OnScoreChanged()
     {
-        var score = GameSystem.Instance.Score;
+        var score = Rcw.Instance.Score;
         scoreText.text = score switch
         {
             >= 100000 => score.ToString(),

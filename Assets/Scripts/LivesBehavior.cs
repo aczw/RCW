@@ -12,7 +12,7 @@ public class LivesBehavior : MonoBehaviour
 
     private void Start()
     {
-        GameSystem.Instance.LifeLost += OnLifeLost;
+        Rcw.Instance.LifeLost += OnLifeLost;
         
         livesText.text = "3";
     }
@@ -20,8 +20,8 @@ public class LivesBehavior : MonoBehaviour
     private void OnLifeLost()
     {
         livesTextAnimator.SetTrigger(LostRound);
-        heartAnimator.SetInteger(Lives, GameSystem.Instance.Lives);
+        heartAnimator.SetInteger(Lives, Rcw.Instance.Lives);
         
-        livesText.text = GameSystem.Instance.Lives.ToString();
+        livesText.text = Rcw.Instance.Lives.ToString();
     }
 }

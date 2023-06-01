@@ -12,11 +12,11 @@ public class ReversedBehavior : MonoBehaviour
 
     private void Start()
     {
-        GameSystem.Instance.RoundReversed += OnRoundReversed;
+        Rcw.Instance.RoundReversed += OnRoundReversed;
     }
 
     private void OnRoundReversed()
     {
-        _animator.SetBool(Reversed, GameSystem.Instance.roundManager.Reverse);
+        _animator.SetBool(Reversed, Rcw.Instance.roundManager.Reverse);
     }
 }

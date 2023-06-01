@@ -10,7 +10,7 @@ public class BackgroundBehavior : MonoBehaviour
 
     private void Start()
     {
-        GameSystem.Instance.RoundReversed += OnRoundReversed;
+        Rcw.Instance.RoundReversed += OnRoundReversed;
         
         _uvRectSizeX = stripes.uvRect.size.x;
     }

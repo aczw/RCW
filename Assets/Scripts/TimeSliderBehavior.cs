@@ -7,6 +7,6 @@ public class TimeSliderBehavior : MonoBehaviour
 
     private void Update()
     {
-        timeSlider.value = GameSystem.Instance.timeManager.CurrTime;
+        timeSlider.value = Rcw.Instance.timeManager.CurrTime;
     }
 }

@@ -1,9 +1,9 @@
 using System;
 using UnityEngine;
 
-public class GameSystem : MonoBehaviour
+public class Rcw : MonoBehaviour
 {
-    public static GameSystem Instance { get; private set; }
+    public static Rcw Instance { get; private set; }
     
     public event Action ScoreChanged;
     public event Action LifeLost;

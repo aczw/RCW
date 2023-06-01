@@ -60,7 +60,7 @@ public class GameSystem : MonoBehaviour
         var percentage = current / (RoundTimer.RoundTime - 0.5f);
         var score = (int) Math.Round(100 * percentage);
 
-        return score;
+        return Mathf.Clamp(score, 0, 100);
     }
 
     public void TogglePause()

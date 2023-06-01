@@ -23,7 +23,7 @@ public class GameSystem : MonoBehaviour
 
     private void LoseRound()
     {
-        var roundScore = CalculateRoundScore();
+        var roundScore = 100 - CalculateRoundScore();
         if (Score - roundScore <= 0)
         {
             Score = 0;
@@ -52,10 +52,13 @@ public class GameSystem : MonoBehaviour
     private int CalculateRoundScore()
     {
         var current = Timer.CurrTime;
-        var percentage = current / RoundTimer.RoundTime;
-        var score = (int) Math.Round(100 * percentage);
+        if (current < 0)
+        {
+            current = 0;
+        }
         
-        Debug.Log(score);
+        var percentage = current / (RoundTimer.RoundTime - 0.5f);
+        var score = (int) Math.Round(100 * percentage);
 
         return score;
     }

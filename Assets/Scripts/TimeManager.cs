@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RoundTimer : MonoBehaviour
+public class TimeManager : MonoBehaviour
 {
     public const float RoundTime = 3.0f;
     public float CurrTime { get; private set; } = RoundTime;
@@ -20,9 +20,6 @@ public class RoundTimer : MonoBehaviour
 
     private void Update()
     {
-        if (!GameSystem.Instance.Paused)
-        {
-            CurrTime -= Time.deltaTime;
-        }
+        CurrTime -= Time.deltaTime;
     }
 }

@@ -8,12 +8,9 @@ public class BackgroundBehavior : MonoBehaviour
 
     private void Update()
     {
-        if (!GameSystem.Instance.Paused)
-        {
-            stripes.uvRect = new Rect(
-                stripes.uvRect.position + new Vector2(speed, speed) * Time.deltaTime,
-                stripes.uvRect.size
-            );
-        }
+        stripes.uvRect = new Rect(
+            stripes.uvRect.position + new Vector2(speed, speed) * Time.deltaTime,
+            stripes.uvRect.size
+        );
     }
 }

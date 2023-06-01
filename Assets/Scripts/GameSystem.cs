@@ -5,19 +5,22 @@ public class GameSystem : MonoBehaviour
 {
     public static GameSystem Instance { get; private set; }
     
-    public RoundTimer Timer { get; private set; }
-    private RoundProperty Property { get; set; }
-    public bool Paused { get; private set; }
+    public event Action ScoreChanged;
+    public event Action LivesChanged;
+    public event Action ColorWordChanged;
+    public event Action RoundReversed;
 
-    public ColorData CurrText { get; private set; }
-    public ColorData CurrColor { get; private set; }
+    public TimeManager timeManager;
+    public RoundManager roundManager;
+    
     public int Score { get; private set; }
     public int Lives { get; private set; } = 3;
-    public bool Reverse { get; private set; }
-
+    
     private void WinRound()
     {
         Score += CalculateRoundScore();
+        ScoreChanged?.Invoke();
+        
         PrepareNextRound();
     }
 
@@ -32,54 +35,50 @@ public class GameSystem : MonoBehaviour
         {
             Score -= roundScore;
         }
+        ScoreChanged?.Invoke();
         
         Lives -= 1;
+        LivesChanged?.Invoke();
+        
         PrepareNextRound();
     }
 
     private void PrepareNextRound()
     {
-        if (Reverse)
-        {
-            Reverse = false;
-        }
+        roundManager.ResetReverse();
+        roundManager.ChooseReverse();
+        RoundReversed?.Invoke();
         
-        (CurrText, CurrColor) = Property.ChooseColors();
-        Reverse = RoundProperty.ChooseReverse();
-        Timer.Reset();
+        roundManager.ChooseColors();
+        ColorWordChanged?.Invoke();
+        
+        timeManager.Reset();
     }
 
     private int CalculateRoundScore()
     {
-        var current = Timer.CurrTime;
+        var current = timeManager.CurrTime;
         if (current < 0)
         {
             current = 0;
         }
         
-        var percentage = current / (RoundTimer.RoundTime - 0.5f);
+        var percentage = current / (TimeManager.RoundTime - 0.5f);
         var score = (int) Math.Round(100 * percentage);
 
         return Mathf.Clamp(score, 0, 100);
     }
 
-    public void TogglePause()
-    {
-        Paused = !Paused;
-    }
-
     private void Awake()
     {
-        if (Instance != null && Instance != this) {
+        if (Instance != null && Instance != this)
+        {
             Destroy(this);
         }
         else
         {
             Instance = this;
         }
-
-        Timer = GetComponent<RoundTimer>();
-        Property = new RoundProperty();
     }
 
     private void Start()
@@ -90,21 +89,21 @@ public class GameSystem : MonoBehaviour
 
     private void Update()
     {
-        var match = CurrText.Equals(CurrColor);
-
-        if (Timer.CurrTime <= 0.0f)
+        if (timeManager.CurrTime <= 0.0f)
         {
             LoseRound();
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (PauseManager.Paused)
         {
-            TogglePause();
+            return;
         }
         
+        var match = roundManager.RoundText.Equals(roundManager.RoundColor);
+        var reversed = roundManager.Reverse;
         if (Input.GetKeyUp(KeyCode.RightArrow))
         {
-            if ((Reverse && match) || (!Reverse && !match))
+            if ((reversed && match) || (!reversed && !match))
             {
                 LoseRound();
             }
@@ -115,7 +114,7 @@ public class GameSystem : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.LeftArrow))
         {
-            if ((Reverse && match) || (!Reverse && !match))
+            if ((reversed && match) || (!reversed && !match))
             {
                 WinRound();
             }

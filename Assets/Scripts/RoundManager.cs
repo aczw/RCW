@@ -12,18 +12,15 @@ public struct ColorData
     public Color Color { get; }
 }
 
-public class RoundProperty
+public class RoundManager : MonoBehaviour
 {
+    public ColorData RoundText { get; private set; }
+    public ColorData RoundColor { get; private set; }
+    public bool Reverse { get; set; }
+    
     private ColorData _prevText;
     private ColorData _prevColor;
-    private int _untilGuarantee;
-
-    public RoundProperty()
-    {
-        _prevText = RandomColor();
-        _prevColor = RandomColor();
-        _untilGuarantee = 3;
-    }
+    private int _untilGuarantee = 3;
     
     private static readonly ColorData[] ColorList =
     {
@@ -34,47 +31,53 @@ public class RoundProperty
         new("Purple", new Color(0.533f, 0.224f, 0.937f))
     };
 
-    private static ColorData RandomColor()
+    private void Awake()
+    {
+        _prevText = RandomColor();
+        _prevColor = RandomColor();
+    }
+
+    private ColorData RandomColor()
     {
         return ColorList[Random.Range(0, ColorList.Length)];
     }
     
-    public (ColorData, ColorData) ChooseColors()
+    public void ChooseColors()
     {
-        var text = RandomColor();
-        var color = RandomColor();
+        RoundText = RandomColor();
+        RoundColor = RandomColor();
         
-        if (!text.Equals(color))
+        if (!RoundText.Equals(RoundColor))
         {
             _untilGuarantee -= 1;
         }
         
         if (_untilGuarantee == 0)
         {
-            var match = RandomColor();
-            text = match;
-            color = match;
-
+            RoundColor = RoundText;
             _untilGuarantee = Random.Range(2, 8);
         }
         else
         {
-            while (_prevText.Equals(text) && _prevColor.Equals(color))
+            while (_prevText.Equals(RoundText) && _prevColor.Equals(RoundColor))
             {
-                text = RandomColor();
-                color = RandomColor();
+                RoundText = RandomColor();
+                RoundColor = RandomColor();
             }
         }
         
-        _prevText = text;
-        _prevColor = color;
-
-        return (text, color);
+        _prevText = RoundText;
+        _prevColor = RoundColor;
     }
 
-    public static bool ChooseReverse()
+    public void ChooseReverse()
     {
         // 15% chance of reversal
-        return Random.Range(0, 100) <= 14;
+        Reverse = Random.Range(0, 100) <= 14;
+    }
+
+    public void ResetReverse()
+    {
+        Reverse = false;
     }
 }

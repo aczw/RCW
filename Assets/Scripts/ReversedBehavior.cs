@@ -10,9 +10,13 @@ public class ReversedBehavior : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    private void Update()
+    private void Start()
     {
-        _animator.enabled = !GameSystem.Instance.Paused;
-        _animator.SetBool(Reversed, GameSystem.Instance.Reverse);
+        GameSystem.Instance.RoundReversed += OnRoundReversed;
+    }
+
+    private void OnRoundReversed()
+    {
+        _animator.SetBool(Reversed, GameSystem.Instance.roundManager.Reverse);
     }
 }

@@ -3,20 +3,25 @@ using UnityEngine;
 
 public class LivesBehavior : MonoBehaviour
 {
-    public Animator animator;
+    public Animator heartAnimator;
+    public Animator livesTextAnimator;
     public TMP_Text livesText;
     
+    private static readonly int LostRound = Animator.StringToHash("LostRound");
     private static readonly int Lives = Animator.StringToHash("Lives");
 
     private void Start()
     {
-        GameSystem.Instance.LivesChanged += OnLivesChanged;
+        GameSystem.Instance.LifeLost += OnLifeLost;
+        
         livesText.text = "3";
     }
 
-    private void OnLivesChanged()
+    private void OnLifeLost()
     {
-        animator.SetInteger(Lives, GameSystem.Instance.Lives);
+        livesTextAnimator.SetTrigger(LostRound);
+        heartAnimator.SetInteger(Lives, GameSystem.Instance.Lives);
+        
         livesText.text = GameSystem.Instance.Lives.ToString();
     }
 }

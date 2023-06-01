@@ -4,11 +4,28 @@ using TMPro;
 public class ScoreboardBehavior : MonoBehaviour
 {
     public TMP_Text scoreText;
+    public Animator animator;
     
+    private static readonly int WonRound = Animator.StringToHash("WonRound");
+    private static readonly int LostRound = Animator.StringToHash("LostRound");
+
     private void Start()
     {
         GameSystem.Instance.ScoreChanged += OnScoreChanged;
+        GameSystem.Instance.RoundWon += OnRoundWon;
+        GameSystem.Instance.RoundLost += OnRoundLost;
+        
         scoreText.text = "000000";
+    }
+
+    private void OnRoundWon()
+    {
+        animator.SetTrigger(WonRound);
+    }
+
+    private void OnRoundLost()
+    {
+        animator.SetTrigger(LostRound);
     }
 
     private void OnScoreChanged()

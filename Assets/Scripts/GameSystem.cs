@@ -6,9 +6,11 @@ public class GameSystem : MonoBehaviour
     public static GameSystem Instance { get; private set; }
     
     public event Action ScoreChanged;
-    public event Action LivesChanged;
+    public event Action LifeLost;
     public event Action ColorWordChanged;
     public event Action RoundReversed;
+    public event Action RoundWon;
+    public event Action RoundLost;
 
     public TimeManager timeManager;
     public RoundManager roundManager;
@@ -18,6 +20,8 @@ public class GameSystem : MonoBehaviour
     
     private void WinRound()
     {
+        RoundWon?.Invoke();
+        
         Score += CalculateRoundScore();
         ScoreChanged?.Invoke();
         
@@ -26,6 +30,8 @@ public class GameSystem : MonoBehaviour
 
     private void LoseRound()
     {
+        RoundLost?.Invoke();
+        
         var roundScore = 100 - CalculateRoundScore();
         if (Score - roundScore <= 0)
         {
@@ -38,16 +44,22 @@ public class GameSystem : MonoBehaviour
         ScoreChanged?.Invoke();
         
         Lives -= 1;
-        LivesChanged?.Invoke();
+        LifeLost?.Invoke();
         
         PrepareNextRound();
     }
 
     private void PrepareNextRound()
     {
+        var preReset = roundManager.Reverse;
+        
         roundManager.ResetReverse();
         roundManager.ChooseReverse();
-        RoundReversed?.Invoke();
+
+        if (roundManager.Reverse != preReset)
+        {
+            RoundReversed?.Invoke();
+        }
         
         roundManager.ChooseColors();
         ColorWordChanged?.Invoke();

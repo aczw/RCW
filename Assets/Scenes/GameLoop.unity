@@ -335,6 +335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1601667917}
+  animator: {fileID: 1601667919}
 --- !u!1 &186302028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1043,6 +1044,7 @@ GameObject:
   - component: {fileID: 644318712}
   - component: {fileID: 644318714}
   - component: {fileID: 644318713}
+  - component: {fileID: 644318715}
   m_Layer: 5
   m_Name: Lives Text
   m_TagString: Untagged
@@ -1167,6 +1169,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 644318711}
   m_CullTransparentMesh: 1
+--- !u!95 &644318715
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644318711}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e885f4651f6e27940b16c3dc7838edeb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &662507841
 GameObject:
   m_ObjectHideFlags: 0
@@ -2577,6 +2600,7 @@ GameObject:
   - component: {fileID: 1601667916}
   - component: {fileID: 1601667918}
   - component: {fileID: 1601667917}
+  - component: {fileID: 1601667919}
   m_Layer: 5
   m_Name: Number
   m_TagString: Untagged
@@ -2701,6 +2725,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1601667915}
   m_CullTransparentMesh: 1
+--- !u!95 &1601667919
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601667915}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2f1b1c43f50353445ae0b143e13e3c63, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1634431227
 GameObject:
   m_ObjectHideFlags: 0
@@ -3694,7 +3739,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 256837f675ece3f4b92a330a4530d157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 1937370329}
+  heartAnimator: {fileID: 1937370329}
+  livesTextAnimator: {fileID: 644318715}
   livesText: {fileID: 644318713}
 --- !u!1 &1998292643
 GameObject:

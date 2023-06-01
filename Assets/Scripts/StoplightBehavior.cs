@@ -1,9 +1,10 @@
+using System;
 using UnityEngine;
 
-public class ReversedBehavior : MonoBehaviour
+public class StoplightBehavior : MonoBehaviour
 {
     private Animator _animator;
-    private static readonly int Reversed = Animator.StringToHash("Reversed");
+    private static readonly int Time = Animator.StringToHash("Time");
 
     private void Awake()
     {
@@ -13,6 +14,6 @@ public class ReversedBehavior : MonoBehaviour
     private void Update()
     {
         _animator.enabled = !GameSystem.Instance.Paused;
-        _animator.SetBool(Reversed, GameSystem.Instance.Reverse);
+        _animator.SetFloat(Time, GameSystem.Instance.Timer.CurrTime);
     }
 }

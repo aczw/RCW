@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 23b284345892784448168236465b1f83
+guid: e6965981cb26db649b952491eb9f70cb
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,13 +105,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ui_stoplight_red_0
+      name: ui_stoplight_glow_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 200
-        height: 200
+        y: 220
+        width: 220
+        height: 220
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,20 +119,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 91dbd00a051a99443bf8e43a3e5ce77d
-      internalID: -1735380775
+      spriteID: 701256cd46e2ae14587b5531c24cf898
+      internalID: -1169463278
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ui_stoplight_red_1
+      name: ui_stoplight_glow_1
       rect:
         serializedVersion: 2
-        x: 200
-        y: 0
-        width: 200
-        height: 200
+        x: 220
+        y: 220
+        width: 220
+        height: 220
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,8 +140,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 943bcd1406869dc40b08aaee0e47e4ce
-      internalID: 6875533
+      spriteID: 6711f1be87a779348b2413a9da4b41e0
+      internalID: 861851731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_stoplight_glow_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 220
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbf02fb94069d094181335616c9c21e0
+      internalID: -1683896992
       vertices: []
       indices: 
       edges: []
@@ -157,8 +178,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ui_stoplight_red_0: -1735380775
-      ui_stoplight_red_1: 6875533
+      ui_stoplight_glow_0: -1169463278
+      ui_stoplight_glow_1: 861851731
+      ui_stoplight_glow_2: -1683896992
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

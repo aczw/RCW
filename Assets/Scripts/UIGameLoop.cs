@@ -7,7 +7,6 @@ public class UIGameLoop : MonoBehaviour
     public TMP_Text scoreText;
     public TMP_Text livesText;
     public TMP_Text colorWordText;
-    public TMP_Text timeText;
     public Slider timeSlider;
 
     private void Update()
@@ -31,6 +30,5 @@ public class UIGameLoop : MonoBehaviour
         
         var time = GameSystem.Instance.Timer.CurrTime;
         timeSlider.value = time;
-        timeText.text = time.ToString("F");
     }
 }                           

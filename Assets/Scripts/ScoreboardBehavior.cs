@@ -33,6 +33,7 @@ public class ScoreboardBehavior : MonoBehaviour
         var score = Rcw.Instance.Score;
         scoreText.text = score switch
         {
+            >= 1000000 => "WTF",
             >= 100000 => score.ToString(),
             >= 10000 => "0" + score,
             >= 1000 => "00" + score,

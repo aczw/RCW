@@ -75,6 +75,7 @@ public class Rcw : MonoBehaviour
             current = 0;
         }
         
+        // make 100% a bit easier to get... 500ms reaction time is reasonable?
         var percentage = current / (TimeManager.RoundTime - 0.5f);
         var score = (int) Math.Round(100 * percentage);
 
@@ -113,6 +114,7 @@ public class Rcw : MonoBehaviour
         
         var match = roundManager.RoundText.Equals(roundManager.RoundColor);
         var reversed = roundManager.Reverse;
+        
         if (Input.GetKeyUp(KeyCode.RightArrow))
         {
             if ((reversed && match) || (!reversed && !match))

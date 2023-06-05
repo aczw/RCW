@@ -19,8 +19,15 @@ public class BackgroundBehavior : MonoBehaviour
     private void OnRoundEnd()
     {
         StopAllCoroutines();
-        StartCoroutine(PulseBackground(Rcw.Instance.roundManager.RoundText.Color, 1f));
-        StartCoroutine(PulseStripes(Rcw.Instance.roundManager.RoundColor.Color, 1f));
+
+        var roundText = Rcw.Instance.roundManager.RoundText.Color;
+        var roundColor = Rcw.Instance.roundManager.RoundColor.Color;
+        
+        // darken stripes if text and color are the same
+        var stripesColor = roundText.Equals(roundColor) ? roundColor * 0.7f : roundColor;
+        
+        StartCoroutine(PulseBackground(roundText, 1f));
+        StartCoroutine(PulseStripes(stripesColor, 1f));
     }
 
     private IEnumerator PulseBackground(Color pulseColor, float duration)

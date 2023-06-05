@@ -102,16 +102,16 @@ public class Rcw : MonoBehaviour
 
     private void Update()
     {
-        if (timeManager.CurrTime <= 0.0f)
-        {
-            LoseRound();
-        }
-
         if (PauseManager.Paused)
         {
             return;
         }
         
+        if (timeManager.CurrTime <= 0.0f)
+        {
+            LoseRound();
+        }
+
         var match = roundManager.RoundText.Equals(roundManager.RoundColor);
         var reversed = roundManager.Reverse;
         

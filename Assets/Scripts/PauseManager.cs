@@ -1,8 +1,11 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseManager : MonoBehaviour
 {
     public static bool Paused;
+    public Button pauseButton;
+    public Canvas pauseCanvas;
 
     public void TogglePause()
     {
@@ -12,9 +15,22 @@ public class PauseManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (!Input.GetKeyDown(KeyCode.Escape))
         {
-            TogglePause();
+            return;
         }
+        
+        if (Paused)
+        {
+            pauseButton.interactable = true;
+            pauseCanvas.enabled = false;
+        }
+        else
+        {
+            pauseButton.interactable = false;
+            pauseCanvas.enabled = true;
+        }
+            
+        TogglePause();
     }
 }

@@ -16,7 +16,7 @@ public class RoundManager : MonoBehaviour
 {
     public ColorData RoundText { get; private set; }
     public ColorData RoundColor { get; private set; }
-    public bool Reverse { get; set; }
+    public bool Reverse { get; private set; }
     
     private ColorData _prevText;
     private ColorData _prevColor;
@@ -37,7 +37,7 @@ public class RoundManager : MonoBehaviour
         _prevColor = RandomColor();
     }
 
-    private ColorData RandomColor()
+    private static ColorData RandomColor()
     {
         return ColorList[Random.Range(0, ColorList.Length)];
     }
@@ -72,8 +72,8 @@ public class RoundManager : MonoBehaviour
 
     public void ChooseReverse()
     {
-        // 15% chance of reversal
-        Reverse = Random.Range(0, 100) <= 14;
+        // 10% chance of reversal
+        Reverse = Random.Range(0, 10) == 0;
     }
 
     public void ResetReverse()

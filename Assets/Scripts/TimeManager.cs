@@ -20,6 +20,9 @@ public class TimeManager : MonoBehaviour
 
     private void Update()
     {
-        CurrTime -= Time.deltaTime;
+        if (!Rcw.Instance.Lost)
+        {
+            CurrTime -= Time.deltaTime;
+        }
     }
 }

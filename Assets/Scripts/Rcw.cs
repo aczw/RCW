@@ -11,12 +11,14 @@ public class Rcw : MonoBehaviour
     public event Action RoundReversed;
     public event Action RoundWon;
     public event Action RoundLost;
+    public event Action GameLost;
 
     public TimeManager timeManager;
     public RoundManager roundManager;
     
     public int Score { get; private set; }
     public int Lives { get; private set; } = 3;
+    public bool Lost { get; private set; }
     
     private void WinRound()
     {
@@ -44,9 +46,16 @@ public class Rcw : MonoBehaviour
         ScoreChanged?.Invoke();
         
         Lives -= 1;
-        LifeLost?.Invoke();
-        
-        PrepareNextRound();
+        if (Lives == 0)
+        {
+            GameLost?.Invoke();
+            Lost = true;
+        }
+        else
+        {
+            LifeLost?.Invoke();
+            PrepareNextRound();
+        }
     }
 
     private void PrepareNextRound()
@@ -102,7 +111,7 @@ public class Rcw : MonoBehaviour
 
     private void Update()
     {
-        if (PauseManager.Paused)
+        if (PauseManager.Paused || Lost)
         {
             return;
         }

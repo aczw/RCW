@@ -5,6 +5,7 @@ public class GameOverBehavior : MonoBehaviour
 {
     public GameObject mainCanvas;
     public GameObject gameOverCanvas;
+    public GameObject pauseCanvas;
     
     public TMP_Text score;
     public TMP_Text colorWord;
@@ -22,5 +23,8 @@ public class GameOverBehavior : MonoBehaviour
         score.text = Rcw.Instance.Score.ToString();
         colorWord.text = Rcw.Instance.roundManager.RoundText.Name.ToLower();
         colorWord.color = Rcw.Instance.roundManager.RoundColor.Color;
+        
+        Destroy(mainCanvas);
+        Destroy(pauseCanvas);
     }
 }

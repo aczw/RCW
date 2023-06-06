@@ -1027,6 +1027,7 @@ GameObject:
   - component: {fileID: 250023922}
   - component: {fileID: 250023921}
   - component: {fileID: 250023920}
+  - component: {fileID: 250023924}
   m_Layer: 5
   m_Name: Replay BG
   m_TagString: Untagged
@@ -1121,7 +1122,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1946945457}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 250023924}
+        m_TargetAssemblyTypeName: ButtonUtils, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: GameLoop
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &250023922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1160,6 +1173,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 250023918}
   m_CullTransparentMesh: 1
+--- !u!114 &250023924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 250023918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 427fd44da45d9f4419beab08d95f30b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &302919204
 GameObject:
   m_ObjectHideFlags: 0
@@ -3798,6 +3823,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCanvas: {fileID: 441508388}
   gameOverCanvas: {fileID: 2053321700}
+  pauseCanvas: {fileID: 1472396977}
   score: {fileID: 729796603}
   colorWord: {fileID: 1970393262}
 --- !u!1 &1108570346
@@ -4424,7 +4450,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0.000061035156, y: -0.000030517578}
-  m_SizeDelta: {x: 1678.3967, y: 980.3915}
+  m_SizeDelta: {x: 1678.397, y: 980.3915}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1305056198
 MonoBehaviour:
@@ -7554,15 +7580,15 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 665184510}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 96.99988}
-  m_SizeDelta: {x: 646, y: 202}
+  m_AnchoredPosition: {x: 0, y: 125}
+  m_SizeDelta: {x: 855.625, y: 267.548}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &2039514739
 MonoBehaviour:

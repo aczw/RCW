@@ -17,6 +17,7 @@ public class Rcw : MonoBehaviour
 
     public TimeManager timeManager;
     public RoundManager roundManager;
+    public MainCanvasBehavior mainCanvas;
     
     public int Score { get; private set; }
     public int Lives { get; private set; } = 3;
@@ -97,6 +98,8 @@ public class Rcw : MonoBehaviour
 
     private IEnumerator StartSequence()
     {
+        StartCoroutine(mainCanvas.StartSequence());
+        
         // animate "Ready?" scrolling down
         Debug.Log("ready");
         yield return new WaitForSeconds(2f);

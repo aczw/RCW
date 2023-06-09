@@ -25,7 +25,7 @@ public class RoundManager : MonoBehaviour
     private static readonly ColorData[] ColorList =
     {
         new("Red", new Color(0.824f, 0.059f, 0.224f)),
-        new("Yellow", new Color(0.875f, 0.557f, 0.114f)),
+        new("Yellow", new Color(0.875f, 0.768f, 0.114f)),
         new("Green", new Color(0.251f, 0.627f, 0.169f)),
         new("Blue", new Color(0.118f, 0.4f, 0.961f)),
         new("Purple", new Color(0.533f, 0.224f, 0.937f))
@@ -42,8 +42,10 @@ public class RoundManager : MonoBehaviour
         return ColorList[Random.Range(0, ColorList.Length)];
     }
     
+    // around 1 correct match for every 1.7 incorrect matches
     public void ChooseColors()
     {
+        
         RoundText = RandomColor();
         RoundColor = RandomColor();
         

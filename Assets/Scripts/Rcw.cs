@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Rcw : MonoBehaviour
@@ -11,6 +12,7 @@ public class Rcw : MonoBehaviour
     public event Action RoundReversed;
     public event Action RoundWon;
     public event Action RoundLost;
+    public event Action GameStart;
     public event Action GameLost;
 
     public TimeManager timeManager;
@@ -18,7 +20,9 @@ public class Rcw : MonoBehaviour
     
     public int Score { get; private set; }
     public int Lives { get; private set; } = 3;
-    public bool Lost { get; private set; }
+    
+    private bool _lost;
+    private bool _started;
     
     private void WinRound()
     {
@@ -49,7 +53,7 @@ public class Rcw : MonoBehaviour
         if (Lives == 0)
         {
             GameLost?.Invoke();
-            Lost = true;
+            _lost = true;
         }
         else
         {
@@ -91,6 +95,24 @@ public class Rcw : MonoBehaviour
         return Mathf.Clamp(score, 0, 100);
     }
 
+    private IEnumerator StartSequence()
+    {
+        // animate "Ready?" scrolling down
+        Debug.Log("ready");
+        yield return new WaitForSeconds(2f);
+        
+        // animate "Go!" scrolling down
+        Debug.Log("go");
+        yield return new WaitForSeconds(2f);
+        
+        // finally, we start the game
+        Debug.Log("start game");
+        _started = true;
+        PrepareNextRound();
+        
+        GameStart?.Invoke();
+    }
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -105,13 +127,12 @@ public class Rcw : MonoBehaviour
 
     private void Start()
     {
-        // around 1 correct match for every 1.7 incorrect matches
-        PrepareNextRound();
+        StartCoroutine(StartSequence());
     }
 
     private void Update()
     {
-        if (PauseManager.Paused || Lost)
+        if (PauseManager.paused || _lost || !_started)
         {
             return;
         }

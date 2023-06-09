@@ -8,8 +8,6 @@ public class BackgroundBehavior : MonoBehaviour
     public RawImage stripes;
     public float speed = 0.15f;
 
-    private bool _paused = true;
-
     private void OnRoundReversed()
     {
         stripes.uvRect = new Rect(
@@ -87,18 +85,14 @@ public class BackgroundBehavior : MonoBehaviour
         Rcw.Instance.RoundReversed += OnRoundReversed;
         Rcw.Instance.RoundWon += OnRoundEnd;
         Rcw.Instance.RoundLost += OnRoundEnd;
-        Rcw.Instance.GameStart += () => _paused = false;
         Rcw.Instance.GameLost += OnGameLost;
     }
 
     private void Update()
     {
-        if (!_paused)
-        {
-            stripes.uvRect = new Rect(
-                stripes.uvRect.position + new Vector2(speed, speed) * Time.deltaTime,
-                stripes.uvRect.size
-            );
-        }
+        stripes.uvRect = new Rect(
+            stripes.uvRect.position + new Vector2(speed, speed) * Time.deltaTime,
+            stripes.uvRect.size
+        );
     }
 }

@@ -3826,6 +3826,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeManager: {fileID: 539637492}
   roundManager: {fileID: 44447445}
+  pauseManager: {fileID: 662507842}
   mainCanvas: {fileID: 441508393}
 --- !u!114 &1060871125
 MonoBehaviour:
@@ -5666,6 +5667,7 @@ GameObject:
   - component: {fileID: 1634431230}
   - component: {fileID: 1634431229}
   - component: {fileID: 1634431232}
+  - component: {fileID: 1634431233}
   m_Layer: 5
   m_Name: Pause BG
   m_TagString: Untagged
@@ -5691,7 +5693,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -68.898926, y: -79.2}
+  m_AnchoredPosition: {x: -75, y: 300}
   m_SizeDelta: {x: 157, y: 169}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1634431229
@@ -5733,7 +5735,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1634431230}
   m_OnClick:
     m_PersistentCalls:
@@ -5833,6 +5835,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1634431233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634431227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c1384eb27306554f90f16bfbb32ecaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseButton: {fileID: 1634431229}
 --- !u!1 &1639229695
 GameObject:
   m_ObjectHideFlags: 0
@@ -6116,7 +6131,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 300}
+  m_AnchoredPosition: {x: 0, y: -300}
   m_SizeDelta: {x: 2422.2024, y: 479}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1724844807
@@ -7360,7 +7375,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 68.898926, y: -75.09497}
+  m_AnchoredPosition: {x: 75, y: 400}
   m_SizeDelta: {x: 157, y: 304}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1994341641

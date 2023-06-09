@@ -17,6 +17,7 @@ public class Rcw : MonoBehaviour
 
     public TimeManager timeManager;
     public RoundManager roundManager;
+    public PauseManager pauseManager;
     public MainCanvasBehavior mainCanvas;
     
     public int Score { get; private set; }
@@ -135,7 +136,7 @@ public class Rcw : MonoBehaviour
 
     private void Update()
     {
-        if (PauseManager.paused || _lost || !_started)
+        if (pauseManager.Paused || _lost || !_started)
         {
             return;
         }

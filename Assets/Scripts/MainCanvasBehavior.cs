@@ -11,29 +11,34 @@ public class MainCanvasBehavior : MonoBehaviour
 
     public IEnumerator StartSequence()
     {
-        Debug.Log("color bg");
-        StartCoroutine(TranslateColorBg(1f));
+        StartCoroutine(TranslateY(colorBg, 1000, 0, 0.8f));
+        StartCoroutine(TranslateY(barBg, -300, 300, 0.8f));
 
-        yield return null;
+        yield return new WaitForSeconds(0.4f);
+        
+        StartCoroutine(TranslateY(livesBg, 400, -75, 0.8f));
+        StartCoroutine(TranslateY(pauseBg, 300, -75, 0.8f));
     }
 
-    private IEnumerator TranslateColorBg(float duration)
+    private static IEnumerator TranslateY(RectTransform element, float initY, float finalY, float duration)
     {
         var elapsed = 0f;
-        var initial = new Vector2(0, 1000);
-        var final = new Vector2(0, 0);
+        var x = element.anchoredPosition.x;
+        
+        var initial = new Vector2(x, initY);
+        var final = new Vector2(x, finalY);
 
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
-            colorBg.anchoredPosition = Vector2.Lerp(initial, final, EaseOutCubic(elapsed / duration));
+            element.anchoredPosition = Vector2.Lerp(initial, final, EaseOutQuint(elapsed / duration));
             
             yield return null;
         }
     }
 
-    private static float EaseOutCubic(float num)
+    private static float EaseOutQuint(float num)
     {
-        return (float) (1f - Math.Pow(1f - num, 3));
+        return (float) (1 - Math.Pow(1 - num, 5));
     }
 }

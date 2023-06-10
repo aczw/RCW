@@ -9,15 +9,33 @@ public class MainCanvasBehavior : MonoBehaviour
     public RectTransform livesBg;
     public RectTransform pauseBg;
 
-    public IEnumerator StartSequence()
+    public RectTransform readyText;
+    public RectTransform goText;
+
+    public IEnumerator InitSequence()
     {
+        yield return new WaitForSeconds(0.1f);
+        
         StartCoroutine(TranslateY(colorBg, 1000, 0, 0.8f));
         StartCoroutine(TranslateY(barBg, -300, 300, 0.8f));
-
-        yield return new WaitForSeconds(0.4f);
         
+        yield return new WaitForSeconds(0.4f);
+
+        StartCoroutine(InitReadyGo());
         StartCoroutine(TranslateY(livesBg, 400, -75, 0.8f));
         StartCoroutine(TranslateY(pauseBg, 300, -75, 0.8f));
+    }
+
+    private IEnumerator InitReadyGo()
+    {
+        StartCoroutine(TranslateY(readyText, 600, 0, 0.3f));
+        yield return new WaitForSeconds(1f);
+        
+        StartCoroutine(TranslateY(readyText, 0, -600, 0.3f));
+        StartCoroutine(TranslateY(goText, 600, 0, 0.3f));
+        yield return new WaitForSeconds(1f);
+        
+        StartCoroutine(TranslateY(goText, 0, -600, 0.3f));
     }
 
     private static IEnumerator TranslateY(RectTransform element, float initY, float finalY, float duration)

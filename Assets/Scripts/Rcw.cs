@@ -99,21 +99,12 @@ public class Rcw : MonoBehaviour
 
     private IEnumerator StartSequence()
     {
-        StartCoroutine(mainCanvas.StartSequence());
+        StartCoroutine(mainCanvas.InitSequence());
+
+        yield return new WaitForSeconds(2.7f);
         
-        // animate "Ready?" scrolling down
-        Debug.Log("ready");
-        yield return new WaitForSeconds(2f);
-        
-        // animate "Go!" scrolling down
-        Debug.Log("go");
-        yield return new WaitForSeconds(2f);
-        
-        // finally, we start the game
-        Debug.Log("start game");
         _started = true;
         PrepareNextRound();
-        
         GameStart?.Invoke();
     }
 

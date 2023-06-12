@@ -4608,7 +4608,7 @@ MonoBehaviour:
   m_Texture: {fileID: 2800000, guid: 9477c0c984450fa4b96e429687ff744e, type: 3}
   m_UVRect:
     serializedVersion: 2
-    x: 0
+    x: 8.39
     y: 0
     width: -5
     height: 5
@@ -5117,7 +5117,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 131, y: 125}
+  m_SizeDelta: {x: 134, y: 137}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1376279281
 MonoBehaviour:
@@ -5892,7 +5892,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 131, y: 125}
+  m_SizeDelta: {x: 134, y: 137}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1583306044
 MonoBehaviour:

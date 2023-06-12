@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BackgroundBehavior : MonoBehaviour
+public class GameLoopBgBehavior : MonoBehaviour
 {
     public Image background;
     public RawImage stripes;

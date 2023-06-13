@@ -37,7 +37,7 @@ public class RoundManager : MonoBehaviour
         _prevColor = RandomColor();
     }
 
-    private static ColorData RandomColor()
+    public static ColorData RandomColor()
     {
         return ColorList[Random.Range(0, ColorList.Length)];
     }

@@ -9,15 +9,15 @@ public class ButtonUtils : MonoBehaviour
 
     public void LoadSceneWrapper(string sceneName)
     {
-        Time.timeScale = 1;
         StartCoroutine(LoadScene(sceneName));
+        Time.timeScale = 1;
     }
 
     private IEnumerator LoadScene(string sceneName)
     {
         animator.SetTrigger(Exit);
         yield return new WaitForSeconds(0.5f);
-        
+
         var asyncLoad = SceneManager.LoadSceneAsync(sceneName);
         while (!asyncLoad.isDone)
         {

@@ -2826,7 +2826,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d95a8410d5df1f34baa71e4b662fe31d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseButton: {fileID: 1634431229}
   pauseCanvas: {fileID: 1472396980}
 --- !u!4 &662507843
 Transform:
@@ -4317,7 +4316,6 @@ MonoBehaviour:
   timeManager: {fileID: 539637492}
   roundManager: {fileID: 44447445}
   pauseManager: {fileID: 662507842}
-  mainCanvas: {fileID: 441508393}
 --- !u!114 &1060871125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5536,6 +5534,7 @@ GameObject:
   - component: {fileID: 1472396980}
   - component: {fileID: 1472396979}
   - component: {fileID: 1472396978}
+  - component: {fileID: 1472396982}
   m_Layer: 5
   m_Name: Pause Canvas
   m_TagString: Untagged
@@ -5629,6 +5628,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1472396982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472396977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46710aaa5c96469408be77a82bfde3ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseCanvas: {fileID: 1472396980}
 --- !u!1 &1517902101
 GameObject:
   m_ObjectHideFlags: 0
@@ -5856,6 +5868,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eedb6e20f261734f98b5d1fb0e4a2c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 1568261968}
 --- !u!1 &1583306042
 GameObject:
   m_ObjectHideFlags: 0
@@ -7103,6 +7116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b698d3fe5e25ff43b7236c8f50fe08c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 1800959380}
 --- !u!1 &1804396408
 GameObject:
   m_ObjectHideFlags: 0

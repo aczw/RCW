@@ -12,7 +12,7 @@ public struct ColorData
     public Color Color { get; }
 }
 
-public class RoundManager : MonoBehaviour
+public class RoundProp : MonoBehaviour
 {
     public ColorData RoundText { get; private set; }
     public ColorData RoundColor { get; private set; }
@@ -45,7 +45,6 @@ public class RoundManager : MonoBehaviour
     // around 1 correct match for every 1.7 incorrect matches
     public void ChooseColors()
     {
-        
         RoundText = RandomColor();
         RoundColor = RandomColor();
         

@@ -6,25 +6,93 @@ public class Rcw : MonoBehaviour
 {
     public static Rcw Instance { get; private set; }
     
+    public int Score { get; private set; }
+    public int Lives { get; private set; } = 3;
+
+    public event Action GameInit; 
+    public event Action GameStart;
+    public event Action GameLost;
+    
     public event Action ScoreChanged;
     public event Action LifeLost;
     public event Action ColorWordChanged;
-    public event Action RoundReversed;
+    public event Action ReverseChanged;
+    
     public event Action RoundWon;
     public event Action RoundLost;
-    public event Action GameStart;
-    public event Action GameLost;
-
-    public TimeManager timeManager;
-    public RoundManager roundManager;
-    public PauseManager pauseManager;
-    public MainCanvasBehavior mainCanvas;
     
-    public int Score { get; private set; }
-    public int Lives { get; private set; } = 3;
+    public Timer timeManager;
+    public RoundProp roundManager;
+    public PauseBehavior pauseManager;
     
     private bool _lost;
     private bool _started;
+    private bool _paused;
+    
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
+
+    private IEnumerator Start()
+    {
+        pauseManager.Paused += () => _paused = true;
+        pauseManager.Resumed += () => _paused = false;
+        
+        GameInit?.Invoke();
+        yield return new WaitForSeconds(3f);
+        
+        PrepareNextRound();
+        
+        _started = true;
+        GameStart?.Invoke();
+    }
+
+    private void Update()
+    {
+        if (_paused || _lost || !_started)
+        {
+            return;
+        }
+        
+        if (timeManager.CurrTime <= 0.0f)
+        {
+            LoseRound();
+        }
+
+        var match = roundManager.RoundText.Equals(roundManager.RoundColor);
+        var reversed = roundManager.Reverse;
+        
+        if (Input.GetKeyUp(KeyCode.RightArrow))
+        {
+            if ((reversed && match) || (!reversed && !match))
+            {
+                LoseRound();
+            }
+            else
+            {
+                WinRound();
+            }
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftArrow))
+        {
+            if ((reversed && match) || (!reversed && !match))
+            {
+                WinRound();
+            }
+            else
+            {
+                LoseRound();
+            }
+        }
+    }
     
     private void WinRound()
     {
@@ -70,10 +138,10 @@ public class Rcw : MonoBehaviour
         
         roundManager.ResetReverse();
         roundManager.ChooseReverse();
-
+        
         if (roundManager.Reverse != preReset)
         {
-            RoundReversed?.Invoke();
+            ReverseChanged?.Invoke();
         }
         
         roundManager.ChooseColors();
@@ -91,76 +159,9 @@ public class Rcw : MonoBehaviour
         }
         
         // make 100% a bit easier to get... 500ms reaction time is reasonable?
-        var percentage = current / (TimeManager.RoundTime - 0.5f);
+        var percentage = current / (Timer.RoundTime - 0.5f);
         var score = (int) Math.Round(100 * percentage);
 
         return Mathf.Clamp(score, 0, 100);
-    }
-
-    private IEnumerator StartSequence()
-    {
-        StartCoroutine(mainCanvas.InitSequence());
-
-        yield return new WaitForSeconds(2.7f);
-        
-        _started = true;
-        PrepareNextRound();
-        GameStart?.Invoke();
-    }
-
-    private void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            Instance = this;
-        }
-    }
-
-    private void Start()
-    {
-        StartCoroutine(StartSequence());
-    }
-
-    private void Update()
-    {
-        if (pauseManager.Paused || _lost || !_started)
-        {
-            return;
-        }
-        
-        if (timeManager.CurrTime <= 0.0f)
-        {
-            LoseRound();
-        }
-
-        var match = roundManager.RoundText.Equals(roundManager.RoundColor);
-        var reversed = roundManager.Reverse;
-        
-        if (Input.GetKeyUp(KeyCode.RightArrow))
-        {
-            if ((reversed && match) || (!reversed && !match))
-            {
-                LoseRound();
-            }
-            else
-            {
-                WinRound();
-            }
-        }
-        else if (Input.GetKeyUp(KeyCode.LeftArrow))
-        {
-            if ((reversed && match) || (!reversed && !match))
-            {
-                WinRound();
-            }
-            else
-            {
-                LoseRound();
-            }
-        }
     }
 }

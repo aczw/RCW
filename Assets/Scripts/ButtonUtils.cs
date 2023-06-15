@@ -1,32 +1,10 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class ButtonUtils : MonoBehaviour
+public static class ButtonUtils
 {
-    public Animator animator;
-    private static readonly int Exit = Animator.StringToHash("Exit");
-
-    public void LoadSceneWrapper(string sceneName)
+    public static void ExitGame()
     {
-        StartCoroutine(LoadScene(sceneName));
-        Time.timeScale = 1;
-    }
-
-    private IEnumerator LoadScene(string sceneName)
-    {
-        animator.SetTrigger(Exit);
-        yield return new WaitForSeconds(0.5f);
-
-        var asyncLoad = SceneManager.LoadSceneAsync(sceneName);
-        while (!asyncLoad.isDone)
-        {
-            yield return null;
-        }
-    }
-
-    public void QuitGame()
-    {
+        Debug.Log("quit game!");
         Application.Quit();
     }
 }

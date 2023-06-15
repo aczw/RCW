@@ -1,20 +1,19 @@
+using System;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class PauseManager : MonoBehaviour
+public class PauseBehavior : MonoBehaviour
 {
-    public bool Paused { get; private set; }
-    
-    public Button pauseButton;
-    public Canvas pauseCanvas;
+    public event Action Paused;
+    public event Action Resumed;
 
     private bool _lost;
     private bool _started;
+    private bool _paused;
 
     public void TogglePause()
     {
-        Paused = !Paused;
-        Time.timeScale = Paused ? 0 : 1;
+        _paused = !_paused;
+        Time.timeScale = _paused ? 0 : 1;
     }
 
     private void Start()
@@ -29,16 +28,14 @@ public class PauseManager : MonoBehaviour
         {
             return;
         }
-        
-        if (Paused)
+
+        if (_paused)
         {
-            pauseButton.interactable = true;
-            pauseCanvas.enabled = false;
+            Resumed?.Invoke();
         }
         else
         {
-            pauseButton.interactable = false;
-            pauseCanvas.enabled = true;
+            Paused?.Invoke();
         }
             
         TogglePause();

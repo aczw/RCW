@@ -1,20 +1,21 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace MainMenu
 {
-    public class UICredits : MonoBehaviour
+    public class UIInstructions : MonoBehaviour
     {
         [SerializeField] private RectTransform background;
         [SerializeField] private GameObject text;
         [SerializeField] private Image mask;
-        [SerializeField] private RectTransform creditsPanel;
+        [SerializeField] private RectTransform instructionsPanel;
 
         [SerializeField] private RectTransform logo;
         [SerializeField] private RectTransform playButton;
         [SerializeField] private RectTransform exitButton;
-        [SerializeField] private RectTransform instructionsButton;
+        [SerializeField] private RectTransform creditsButton;
 
         private Vector2 _bgPosA;
         private Vector2 _bgPosB;
@@ -33,52 +34,52 @@ namespace MainMenu
             _bgSizeB = new Vector2(714, _bgSizeA.y);
         }
 
-        public void ToggleCreditsWrapper()
+        public void ToggleInstructionsWrapper()
         {
             StopAllCoroutines();
             _open = !_open;
-            StartCoroutine(_open ? OpenCredits() : CloseCredits());
+            StartCoroutine(_open ? OpenInstructions() : CloseInstructions());
         }
 
-        private IEnumerator OpenCredits()
+        private IEnumerator OpenInstructions()
         {
-            StartCoroutine(TranslateX(logo, logo.anchoredPosition.x, -2600, 0.3f, true));
+            StartCoroutine(TranslateX(logo, logo.anchoredPosition.x, 2600, 0.3f, true));
 
             yield return new WaitForSeconds(0.15f);
             
-            StartCoroutine(TranslateX(instructionsButton, instructionsButton.anchoredPosition.x, -2000, 0.2f, true));
-            
+            StartCoroutine(TranslateX(creditsButton, creditsButton.anchoredPosition.x, 2000, 0.2f, true));
+
             yield return new WaitForSeconds(0.15f);
             
-            StartCoroutine(TranslateX(playButton, playButton.anchoredPosition.x, -2000, 0.2f, true));
+            StartCoroutine(TranslateX(exitButton, exitButton.anchoredPosition.x, 2000, 0.2f, true));
             
             yield return new WaitForSeconds(0.1f);
             
-            StartCoroutine(TranslateX(exitButton, exitButton.anchoredPosition.x, -2000, 0.2f, true));
-            StartCoroutine(TranslateX(creditsPanel, creditsPanel.anchoredPosition.x, 0, 0.5f, false));
+            StartCoroutine(TranslateX(playButton, playButton.anchoredPosition.x, 2000, 0.2f, true));
+            StartCoroutine(TranslateX(instructionsPanel, instructionsPanel.anchoredPosition.x, 0, 0.5f, false));
             
             yield return new WaitForSeconds(0.2f);
             
             StartCoroutine(Transform(0.5f, _bgPosA, _bgPosB, _bgSizeA, _bgSizeB));
         }
 
-        private IEnumerator CloseCredits()
+        private IEnumerator CloseInstructions()
         {
-            StartCoroutine(TranslateX(creditsPanel, creditsPanel.anchoredPosition.x, 2600, 0.3f, true));
+            StartCoroutine(TranslateX(instructionsPanel, instructionsPanel.anchoredPosition.x, -2600, 0.3f, true));
             StartCoroutine(Transform(0.5f, _bgPosB, _bgPosA, _bgSizeB, _bgSizeA));
             
             yield return new WaitForSeconds(0.15f);
             
-            StartCoroutine(TranslateX(exitButton, exitButton.anchoredPosition.x, 400, 0.4f, false));
-            
+            StartCoroutine(TranslateX(playButton, playButton.anchoredPosition.x, -400, 0.4f, false));
+
             yield return new WaitForSeconds(0.1f);
             
             StartCoroutine(TranslateX(logo, logo.anchoredPosition.x, 0, 0.5f, false));
-            StartCoroutine(TranslateX(playButton, playButton.anchoredPosition.x, -400, 0.4f, false));
+            StartCoroutine(TranslateX(exitButton, exitButton.anchoredPosition.x, 400, 0.4f, false));
             
             yield return new WaitForSeconds(0.15f);
             
-            StartCoroutine(TranslateX(instructionsButton, instructionsButton.anchoredPosition.x, -947, 0.2f, false));
+            StartCoroutine(TranslateX(creditsButton, creditsButton.anchoredPosition.x, 947, 0.2f, false));
         }
 
         private IEnumerator Transform(

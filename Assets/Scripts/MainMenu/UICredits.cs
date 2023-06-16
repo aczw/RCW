@@ -54,14 +54,13 @@ namespace MainMenu
             
             yield return new WaitForSeconds(0.2f);
             
-            StartCoroutine(Transform(0.8f, _bgPosA, _bgPosB, _bgSizeA, _bgSizeB));
+            StartCoroutine(Transform(0.5f, _bgPosA, _bgPosB, _bgSizeA, _bgSizeB));
         }
 
         private IEnumerator CloseCredits()
         {
             StartCoroutine(TranslateX(creditsPanel, creditsPanel.anchoredPosition.x, 2600, 0.3f, true));
-            StartCoroutine(Transform(0.8f, _bgPosB, _bgPosA, _bgSizeB, _bgSizeA));
-            
+            StartCoroutine(Transform(0.5f, _bgPosB, _bgPosA, _bgSizeB, _bgSizeA));
             
             yield return new WaitForSeconds(0.15f);
             
@@ -79,7 +78,7 @@ namespace MainMenu
         {
             var elapsed = 0f;
 
-            StartCoroutine(_open ? ToggleText(0.3f) : ToggleText(0.1f));
+            StartCoroutine(_open ? ToggleText(0.5f) : ToggleText(0.1f));
 
             while (elapsed < duration)
             {

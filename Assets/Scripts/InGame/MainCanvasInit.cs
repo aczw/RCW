@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -53,15 +52,10 @@ namespace InGame
             while (elapsed < duration)
             {
                 elapsed += Time.deltaTime;
-                element.anchoredPosition = Vector2.Lerp(initial, final, EaseOutQuint(elapsed / duration));
+                element.anchoredPosition = Vector2.Lerp(initial, final, Easings.EaseOutQuint(elapsed / duration));
             
                 yield return null;
             }
-        }
-
-        private static float EaseOutQuint(float num)
-        {
-            return (float) (1 - Math.Pow(1 - num, 5));
         }
     }
 }

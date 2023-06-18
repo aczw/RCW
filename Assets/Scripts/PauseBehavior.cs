@@ -13,7 +13,17 @@ public class PauseBehavior : MonoBehaviour
     public void TogglePause()
     {
         _paused = !_paused;
-        Time.timeScale = _paused ? 0 : 1;
+        
+        if (_paused)
+        {
+            Time.timeScale = 0;
+            Audio.Instance.PauseMusic();
+        }
+        else
+        {
+            Time.timeScale = 1;
+            Audio.Instance.ResumeMusic();
+        }
     }
 
     private void Start()

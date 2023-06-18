@@ -31,13 +31,13 @@ public class Rcw : MonoBehaviour
     
     private void Awake()
     {
-        if (Instance != null && Instance != this)
+        if (Instance == null)
         {
-            Destroy(this);
+            Instance = this;
         }
         else
         {
-            Instance = this;
+            Destroy(gameObject);
         }
     }
 
@@ -50,6 +50,9 @@ public class Rcw : MonoBehaviour
         yield return new WaitForSeconds(3f);
         
         PrepareNextRound();
+        Audio.Instance.StopMusic();
+        StartCoroutine(Audio.Instance.ChangeMusicVolume(0.5f, 0.2f));
+        Audio.Instance.PlayMusic();
         
         _started = true;
         GameStart?.Invoke();
@@ -124,6 +127,10 @@ public class Rcw : MonoBehaviour
         {
             GameLost?.Invoke();
             _lost = true;
+            
+            StartCoroutine(Audio.Instance.ChangeMusicVolume(0.6f, 1f));
+            Audio.Instance.ChangeMusicClip(Audio.Instance.gameOver);
+            Audio.Instance.PlayMusic();
         }
         else
         {

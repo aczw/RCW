@@ -16,7 +16,22 @@ public class SceneLoader : MonoBehaviour
     private IEnumerator LoadScene(string sceneName)
     {
         animator.SetTrigger(Exit);
+        
+        StartCoroutine(Audio.Instance.ChangeMusicVolume(0f, 0.4f));
+
+        // realtime because game may be paused
         yield return new WaitForSecondsRealtime(0.5f);
+        
+        switch (sceneName)
+        {
+            case "GameLoop":
+                Audio.Instance.ChangeMusicClip(Audio.Instance.inGame);
+                break;
+            
+            case "MainMenu":
+                Audio.Instance.ChangeMusicClip(Audio.Instance.mainMenu);
+                break;
+        }
         
         Time.timeScale = 1;
         

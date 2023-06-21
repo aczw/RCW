@@ -1,11 +1,11 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace MainMenu
 {
-    public class UIInstructions : MonoBehaviour
+    public class UIInstructions : MonoBehaviour, IPointerEnterHandler
     {
         [SerializeField] private RectTransform background;
         [SerializeField] private GameObject text;
@@ -16,6 +16,8 @@ namespace MainMenu
         [SerializeField] private RectTransform playButton;
         [SerializeField] private RectTransform exitButton;
         [SerializeField] private RectTransform creditsButton;
+        
+        [SerializeField] private Button instructionsButton;
 
         private Vector2 _bgPosA;
         private Vector2 _bgPosB;
@@ -27,6 +29,8 @@ namespace MainMenu
 
         private void Start()
         { 
+            instructionsButton.onClick.AddListener(() => Audio.Instance.sfxSource.PlayOneShot(AudioClips.Instance.buttonClick));
+            
             _bgPosA = background.anchoredPosition;
             _bgPosB = new Vector2(0, _bgPosA.y);
             
@@ -159,6 +163,11 @@ namespace MainMenu
 
                 yield return null;
             }
+        }
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            Audio.Instance.sfxSource.PlayOneShot(AudioClips.Instance.buttonHover);
         }
     }
 }

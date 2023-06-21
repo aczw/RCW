@@ -270,7 +270,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1142,6 +1142,7 @@ MonoBehaviour:
   playButton: {fileID: 820912248}
   exitButton: {fileID: 932192125}
   creditsButton: {fileID: 511858783}
+  instructionsButton: {fileID: 397026688}
 --- !u!1 &417963528
 GameObject:
   m_ObjectHideFlags: 0
@@ -1711,6 +1712,7 @@ MonoBehaviour:
   playButton: {fileID: 820912248}
   exitButton: {fileID: 932192125}
   instructionsButton: {fileID: 397026686}
+  creditsButton: {fileID: 511858787}
 --- !u!114 &511858787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2181,6 +2183,7 @@ GameObject:
   - component: {fileID: 820912250}
   - component: {fileID: 820912249}
   - component: {fileID: 820912252}
+  - component: {fileID: 820912253}
   m_Layer: 5
   m_Name: Play BG
   m_TagString: Untagged
@@ -2256,7 +2259,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1159071147}
-        m_TargetAssemblyTypeName: UIMainMenu, Assembly-CSharp
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
         m_MethodName: LoadSceneWrapper
         m_Mode: 5
         m_Arguments:
@@ -2326,6 +2329,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &820912253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820912247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf9293906115ca4faaa1018995fa5fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playButton: {fileID: 820912249}
 --- !u!1 &848475440
 GameObject:
   m_ObjectHideFlags: 0
@@ -2773,19 +2789,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 932192128}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11500000, guid: 3ed03ffb29ea5d74e93a6e81a2959f7f, type: 3}
-        m_TargetAssemblyTypeName: UnityEngine.Object, UnityEngine
-        m_MethodName: set_name
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &932192128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4215,9 +4219,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 848475442}
   sfxSource: {fileID: 76378527}
-  mainMenu: {fileID: 8300000, guid: 2285d75994c485a488c260833c66408d, type: 3}
-  inGame: {fileID: 8300000, guid: 5e4fbdc7349e87849b60ae021b5c6378, type: 3}
-  gameOver: {fileID: 8300000, guid: 1ca245a8edcf2b64cbd6d9634fe4a195, type: 3}
 --- !u!1 &1795082144
 GameObject:
   m_ObjectHideFlags: 0
@@ -4869,6 +4870,8 @@ MonoBehaviour:
   mainMenu: {fileID: 8300000, guid: 2285d75994c485a488c260833c66408d, type: 3}
   inGame: {fileID: 8300000, guid: 5e4fbdc7349e87849b60ae021b5c6378, type: 3}
   gameOver: {fileID: 8300000, guid: 1ca245a8edcf2b64cbd6d9634fe4a195, type: 3}
+  buttonClick: {fileID: 8300000, guid: d012ea7e17065904484765428876b846, type: 3}
+  buttonHover: {fileID: 8300000, guid: 4f199e32f4ba0e74e82b550fe8e93235, type: 3}
 --- !u!4 &2118586800
 Transform:
   m_ObjectHideFlags: 0

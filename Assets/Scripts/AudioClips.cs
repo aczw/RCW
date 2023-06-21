@@ -7,6 +7,9 @@ public class AudioClips : MonoBehaviour
     public AudioClip mainMenu;
     public AudioClip inGame;
     public AudioClip gameOver;
+
+    public AudioClip buttonClick;
+    public AudioClip buttonHover;
     
     private void Awake()
     {

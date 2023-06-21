@@ -21,21 +21,18 @@ public class SceneLoader : MonoBehaviour
 
         // realtime because game may be paused
         yield return new WaitForSecondsRealtime(0.5f);
-        
-        switch (sceneName)
+
+        Audio.Instance.musicSource.clip = sceneName switch
         {
-            case "GameLoop":
-                Audio.Instance.musicSource.clip = AudioClips.Instance.inGame;
-                break;
-            
-            case "MainMenu":
-                Audio.Instance.musicSource.clip = AudioClips.Instance.mainMenu;
-                break;
-        }
-        
+            "GameLoop" => AudioClips.Instance.inGame,
+            "MainMenu" => AudioClips.Instance.mainMenu,
+            _ => Audio.Instance.musicSource.clip
+        };
+
         Time.timeScale = 1;
         
         var asyncLoad = SceneManager.LoadSceneAsync(sceneName);
+        
         while (!asyncLoad.isDone)
         {
             yield return null;

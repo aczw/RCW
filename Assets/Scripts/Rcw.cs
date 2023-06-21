@@ -51,7 +51,7 @@ public class Rcw : MonoBehaviour
         
         PrepareNextRound();
         Audio.Instance.StopMusic();
-        StartCoroutine(Audio.Instance.ChangeMusicVolume(0.5f, 0.2f));
+        StartCoroutine(Audio.Instance.ChangeMusicVolume(0.5f, 0.01f));
         Audio.Instance.PlayMusic();
         
         _started = true;
@@ -129,7 +129,7 @@ public class Rcw : MonoBehaviour
             _lost = true;
             
             StartCoroutine(Audio.Instance.ChangeMusicVolume(0.6f, 1f));
-            Audio.Instance.ChangeMusicClip(Audio.Instance.gameOver);
+            Audio.Instance.ChangeMusicClip(AudioClips.Instance.gameOver);
             Audio.Instance.PlayMusic();
         }
         else

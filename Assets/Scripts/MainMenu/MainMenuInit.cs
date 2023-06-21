@@ -6,7 +6,7 @@ namespace MainMenu
     {
         private void Start()
         {
-            Audio.Instance.ChangeMusicClip(Audio.Instance.mainMenu);
+            Audio.Instance.ChangeMusicClip(AudioClips.Instance.mainMenu);
             StartCoroutine(Audio.Instance.ChangeMusicVolume(0.8f, 0.4f));
             Audio.Instance.PlayMusic();
         }

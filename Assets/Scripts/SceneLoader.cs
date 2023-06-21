@@ -25,11 +25,11 @@ public class SceneLoader : MonoBehaviour
         switch (sceneName)
         {
             case "GameLoop":
-                Audio.Instance.ChangeMusicClip(Audio.Instance.inGame);
+                Audio.Instance.ChangeMusicClip(AudioClips.Instance.inGame);
                 break;
             
             case "MainMenu":
-                Audio.Instance.ChangeMusicClip(Audio.Instance.mainMenu);
+                Audio.Instance.ChangeMusicClip(AudioClips.Instance.mainMenu);
                 break;
         }
         

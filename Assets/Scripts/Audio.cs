@@ -5,12 +5,8 @@ public class Audio : MonoBehaviour
 {
     public static Audio Instance { get; private set; }
 
-    [SerializeField] private AudioSource musicSource;
-    [SerializeField] private AudioSource sfxSource;
-
-    public AudioClip mainMenu;
-    public AudioClip inGame;
-    public AudioClip gameOver;
+    public AudioSource musicSource;
+    public AudioSource sfxSource;
 
     private void Awake()
     {

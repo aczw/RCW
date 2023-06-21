@@ -50,9 +50,9 @@ public class Rcw : MonoBehaviour
         yield return new WaitForSeconds(3f);
         
         PrepareNextRound();
-        Audio.Instance.StopMusic();
-        StartCoroutine(Audio.Instance.ChangeMusicVolume(0.5f, 0.01f));
-        Audio.Instance.PlayMusic();
+        Audio.Instance.musicSource.Stop();
+        Audio.Instance.musicSource.volume = 0.5f;
+        Audio.Instance.musicSource.Play();
         
         _started = true;
         GameStart?.Invoke();
@@ -129,8 +129,8 @@ public class Rcw : MonoBehaviour
             _lost = true;
             
             StartCoroutine(Audio.Instance.ChangeMusicVolume(0.6f, 1f));
-            Audio.Instance.ChangeMusicClip(AudioClips.Instance.gameOver);
-            Audio.Instance.PlayMusic();
+            Audio.Instance.musicSource.clip = AudioClips.Instance.gameOver;
+            Audio.Instance.musicSource.Play();
         }
         else
         {

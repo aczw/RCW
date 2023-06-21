@@ -21,31 +21,6 @@ public class Audio : MonoBehaviour
         }
     }
 
-    public void ChangeMusicClip(AudioClip clip)
-    {
-        musicSource.clip = clip;
-    }
-
-    public void PlayMusic()
-    {
-        musicSource.Play();
-    }
-
-    public void StopMusic()
-    {
-        musicSource.Stop();
-    }
-
-    public void PauseMusic()
-    {
-        musicSource.Pause();
-    }
-
-    public void ResumeMusic()
-    {
-        musicSource.UnPause();
-    }
-
     public IEnumerator ChangeMusicVolume(float volume, float duration)
     {
         var initVol = musicSource.volume;

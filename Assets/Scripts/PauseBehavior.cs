@@ -17,12 +17,12 @@ public class PauseBehavior : MonoBehaviour
         if (_paused)
         {
             Time.timeScale = 0;
-            Audio.Instance.PauseMusic();
+            Audio.Instance.musicSource.Pause();
         }
         else
         {
             Time.timeScale = 1;
-            Audio.Instance.ResumeMusic();
+            Audio.Instance.musicSource.UnPause();
         }
     }
 

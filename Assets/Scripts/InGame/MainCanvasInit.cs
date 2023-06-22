@@ -28,6 +28,8 @@ namespace InGame
             yield return new WaitForSeconds(0.4f);
 
             StartCoroutine(TranslateY(readyText, 600, 0, 0.3f));
+            Audio.Instance.sfxSource.PlayOneShot(AudioClips.Instance.ready);
+            
             StartCoroutine(TranslateY(livesBg, 400, -75, 0.8f));
             StartCoroutine(TranslateY(pauseBg, 300, -75, 0.8f));
             
@@ -35,6 +37,7 @@ namespace InGame
         
             StartCoroutine(TranslateY(readyText, 0, -600, 0.3f));
             StartCoroutine(TranslateY(goText, 600, 0, 0.3f));
+            Audio.Instance.sfxSource.PlayOneShot(AudioClips.Instance.go);
 
             yield return new WaitForSeconds(1f);
         

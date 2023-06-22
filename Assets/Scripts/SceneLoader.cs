@@ -28,11 +28,11 @@ public class SceneLoader : MonoBehaviour
             "MainMenu" => AudioClips.Instance.mainMenuMusic,
             _ => Audio.Instance.musicSource.clip
         };
+        Audio.Instance.sfxSource.Stop();
 
         Time.timeScale = 1;
         
         var asyncLoad = SceneManager.LoadSceneAsync(sceneName);
-        
         while (!asyncLoad.isDone)
         {
             yield return null;

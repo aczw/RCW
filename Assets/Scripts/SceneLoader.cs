@@ -24,8 +24,8 @@ public class SceneLoader : MonoBehaviour
 
         Audio.Instance.musicSource.clip = sceneName switch
         {
-            "GameLoop" => AudioClips.Instance.inGame,
-            "MainMenu" => AudioClips.Instance.mainMenu,
+            "GameLoop" => AudioClips.Instance.inGameMusic,
+            "MainMenu" => AudioClips.Instance.mainMenuMusic,
             _ => Audio.Instance.musicSource.clip
         };
 

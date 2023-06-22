@@ -16,11 +16,13 @@ public class PauseBehavior : MonoBehaviour
         
         if (_paused)
         {
+            Paused?.Invoke();
             Time.timeScale = 0;
             Audio.Instance.musicSource.Pause();
         }
         else
         {
+            Resumed?.Invoke();
             Time.timeScale = 1;
             Audio.Instance.musicSource.UnPause();
         }
@@ -37,15 +39,6 @@ public class PauseBehavior : MonoBehaviour
         if (!Input.GetKeyDown(KeyCode.Escape) || _lost || !_started)
         {
             return;
-        }
-
-        if (_paused)
-        {
-            Resumed?.Invoke();
-        }
-        else
-        {
-            Paused?.Invoke();
         }
             
         TogglePause();

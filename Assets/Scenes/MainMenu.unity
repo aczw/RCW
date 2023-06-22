@@ -270,7 +270,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.6
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4867,11 +4867,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29b982551d2ff0041b24755169c0a2c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenu: {fileID: 8300000, guid: 2285d75994c485a488c260833c66408d, type: 3}
-  inGame: {fileID: 8300000, guid: 5e4fbdc7349e87849b60ae021b5c6378, type: 3}
-  gameOver: {fileID: 8300000, guid: 1ca245a8edcf2b64cbd6d9634fe4a195, type: 3}
+  mainMenuMusic: {fileID: 8300000, guid: 2285d75994c485a488c260833c66408d, type: 3}
+  inGameMusic: {fileID: 8300000, guid: 5e4fbdc7349e87849b60ae021b5c6378, type: 3}
+  gameOverMusic: {fileID: 8300000, guid: 1ca245a8edcf2b64cbd6d9634fe4a195, type: 3}
   buttonClick: {fileID: 8300000, guid: d012ea7e17065904484765428876b846, type: 3}
   buttonHover: {fileID: 8300000, guid: 4f199e32f4ba0e74e82b550fe8e93235, type: 3}
+  pauseOn: {fileID: 8300000, guid: c15e2b9b62f83a64fb63a4edd98d1cfa, type: 3}
+  pauseOff: {fileID: 8300000, guid: d42a60d56f18b7041a46e01dc83d9c5a, type: 3}
+  roundWon: {fileID: 8300000, guid: 7f74d04a6615c5443b85e7257ff70815, type: 3}
+  roundLost: {fileID: 8300000, guid: 62f2bdc8ada0ee14c83cc3c9fc5d088c, type: 3}
+  ready: {fileID: 8300000, guid: beb9e7ea7421fed4bbeda6b20fe3ed55, type: 3}
+  go: {fileID: 8300000, guid: 2de41f5b9d10ae449abdb4421a80b252, type: 3}
+  stoplight: {fileID: 8300000, guid: b9072f7862985174a84b337c92cee3c5, type: 3}
+  gameOver: {fileID: 8300000, guid: 4f1e64b333dab314d935d3b8706afb33, type: 3}
+  lowLife: {fileID: 8300000, guid: 47584f870dbf6e34bb4904a4a49c773f, type: 3}
 --- !u!4 &2118586800
 Transform:
   m_ObjectHideFlags: 0

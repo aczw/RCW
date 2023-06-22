@@ -21,10 +21,19 @@ namespace InGame
 
         private void OnLifeLost()
         {
+            var lives = Rcw.Instance.Lives;
+
+            if (lives == 1 && !Audio.Instance.sfxSource.loop)
+            {
+                Audio.Instance.sfxSource.loop = true;
+                Audio.Instance.sfxSource.clip = AudioClips.Instance.lowLife;
+                Audio.Instance.sfxSource.Play();
+            }
+            
             livesTextAnimator.SetTrigger(LostRound);
             heartAnimator.SetInteger(Lives, Rcw.Instance.Lives);
         
-            livesText.text = Rcw.Instance.Lives.ToString();
+            livesText.text = lives.ToString();
         }
     }
 }

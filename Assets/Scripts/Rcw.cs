@@ -100,6 +100,7 @@ public class Rcw : MonoBehaviour
     private void WinRound()
     {
         RoundWon?.Invoke();
+        Audio.Instance.sfxSource.PlayOneShot(AudioClips.Instance.roundWon);
         
         Score += CalculateRoundScore();
         ScoreChanged?.Invoke();
@@ -110,6 +111,7 @@ public class Rcw : MonoBehaviour
     private void LoseRound()
     {
         RoundLost?.Invoke();
+        Audio.Instance.sfxSource.PlayOneShot(AudioClips.Instance.roundLost);
         
         var roundScore = 100 - CalculateRoundScore();
         if (Score - roundScore <= 0)
@@ -129,8 +131,11 @@ public class Rcw : MonoBehaviour
             _lost = true;
             
             StartCoroutine(Audio.Instance.ChangeMusicVolume(0.6f, 1f));
-            Audio.Instance.musicSource.clip = AudioClips.Instance.gameOver;
+            Audio.Instance.musicSource.clip = AudioClips.Instance.gameOverMusic;
             Audio.Instance.musicSource.Play();
+            
+            Audio.Instance.sfxSource.Stop();
+            Audio.Instance.sfxSource.PlayOneShot(AudioClips.Instance.gameOver);
         }
         else
         {

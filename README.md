@@ -4,7 +4,7 @@
 
 ## random color words...
 
-*check it out on itch [here](https://aczw.itch.io/rcw)!*
+*play the game in your browser on [itch](https://aczw.itch.io/rcw)! there are also Windows, Linux, and macOS builds under [releases](https://github.com/aczw/RCW/releases/)*
 
 based on the [Stroop effect](https://en.wikipedia.org/wiki/Stroop_effect) and *heavily* inspired by [OLDTV](https://store.steampowered.com/app/643270/OLDTV/). this is my first time with Unity and gamedev in general so expect many. bugs
 
@@ -24,4 +24,4 @@ I did the programming and visuals, but I'm terrified of pianos. thanks to Eric M
 
 ## yeah
 
-thanks for playing and please leave feedback! this has been fun. maybe I'll add a Linux build some day...
+thanks for playing and please leave feedback! this has been fun.

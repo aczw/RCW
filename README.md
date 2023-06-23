@@ -1,6 +1,8 @@
 <div width="100%">
-    <img src="Assets/UI/MainMenu/logo.png" width="33%">
+    <img src="Assets/UI/MainMenu/logo.png" width="40%">
 </div>
+
+## random color words...
 
 *check it out on itch [here](https://aczw.itch.io/rcw)!*
 
